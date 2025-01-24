@@ -21,4 +21,8 @@ public class TransacaoService {
         }
         tansacoes.add(tansacao);
     }
+
+    public void deleteTransacao() {
+        tansacoes.clear();
+    }
 }
