@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.DoubleSummaryStatistics;
+
 @RestController
 @RequestMapping("transacao")
 @RequiredArgsConstructor
@@ -33,5 +35,11 @@ public class TansacaoController {
 
         transacaoService.deleteTransacao();
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<DoubleSummaryStatistics> getEstatistica(@RequestParam(value = "time", defaultValue = "60", required = false) Integer time) {
+
+        return ResponseEntity.ok(transacaoService.eststistica(time));
     }
 }
